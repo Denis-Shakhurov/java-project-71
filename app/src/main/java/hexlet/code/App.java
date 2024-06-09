@@ -5,11 +5,13 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.util.concurrent.Callable;
 
-@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "Help demo v1.2.3", header = "%nAutomatic Help Demo%n",
+@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "Help demo v1.2.3",
         description = "Compares two configuration files and shows a difference.")
 
-public class App implements Runnable {
+public class App implements Callable<String> {
     @Option(names = {"-h", "--help"}, usageHelp = true,
             description = "Show this help message and exit.")
     boolean usageHelpRequested;
@@ -22,16 +24,18 @@ public class App implements Runnable {
     File archive;
 
     @Parameters(paramLabel = "filePath1", description = "path to first file")
-    File filePath1;
+    Path filePath1;
     @Parameters(paramLabel = "filePath2", description = "path to second file")
-    File filePath2;
+    Path filePath2;
 
     @Override
-    public void run() {
-
+    public String call() throws Exception {
+        System.out.println(Differ.generate(filePath1, filePath2));
+        return "";
     }
 
     public static void main(String[] args) {
-        CommandLine.run(new App(), System.err, args);
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 }
