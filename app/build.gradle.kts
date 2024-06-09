@@ -16,6 +16,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation ("info.picocli:picocli:4.7.6")
     annotationProcessor ("info.picocli:picocli-codegen:4.7.6")
+    implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 }
 application {
     mainClass.set("hexlet.code.App")
