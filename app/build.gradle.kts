@@ -19,17 +19,23 @@ dependencies {
     annotationProcessor ("info.picocli:picocli-codegen:4.7.6")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.1")
 }
+
 application {
     mainClass.set("hexlet.code.App")
+
 }
-//compileJava {
-  //  options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
-//}
+
+jacoco {
+    toolVersion = "0.8.11"
+    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
+}
 
 tasks.test {
     useJUnitPlatform()
 }
+
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
+
 tasks.jacocoTestReport { reports { xml.required.set(true) } }
