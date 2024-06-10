@@ -26,7 +26,7 @@ public class Differ {
             if (value2 == null) {
                 diff.append(" - " + key + ": " + value1);
                 diff.append("\n");
-            } else if (!value1.equals(value2)) {
+            } else if (!value1.equals(value2) && value2 != null) {
                 diff.append(" - " + key + ": " + value1);
                 diff.append("\n");
                 diff.append(" + " + key + ": " + value2);
