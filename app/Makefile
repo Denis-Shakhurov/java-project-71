@@ -31,6 +31,6 @@ check-deps:
 	./gradlew dependencyUpdates -Drevision=release
 
 
-build-run: build
+build-run: build run
 
 .PHONY: build
