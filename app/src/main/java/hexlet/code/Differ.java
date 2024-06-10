@@ -52,7 +52,7 @@ public class Differ {
         }
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, String> map = objectMapper.readValue(new File(absolutPath),
-                new TypeReference<TreeMap<String, String>>(){});
+                new TypeReference<TreeMap<String, String>>() { });
 
         return map;
     }
