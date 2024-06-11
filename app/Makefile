@@ -18,8 +18,6 @@ run-dist:
 run:
 	./gradlew run
 
-test:
-	./gradlew test
 
 report:
 	./gradlew jacocoTestReport
@@ -31,6 +29,9 @@ check-deps:
 	./gradlew dependencyUpdates -Drevision=release
 
 
-build-run: build run
-
 .PHONY: build
+
+build: report
+	lint
+	./gradlew build
+	./gradlew test
