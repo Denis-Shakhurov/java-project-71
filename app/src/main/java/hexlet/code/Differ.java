@@ -6,13 +6,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 
 
 public class Differ {
-    public static String generate(Path pathFile1, Path pathFile2) throws IOException {
-        Map<String, Object> parseFile1 = getData(pathFile1);
-        Map<String, Object> parseFile2 = getData(pathFile2);
+    public static String generate(Path pathFile1, Path pathFile2) {
+        Map<String, Object> parseFile1;
+        Map<String, Object> parseFile2;
+        try {
+            parseFile1 = getData(pathFile1);
+            parseFile2 = getData(pathFile2);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         List<String> keys = new ArrayList<>(parseFile1.keySet());
         keys.addAll(parseFile2.keySet());
@@ -39,10 +49,9 @@ public class Differ {
                 diff.put("+ " + key, value2);
             }
         }
-        
+
         StringBuilder sb = new StringBuilder("{\n");
-        for (Map.Entry<String, Object> entry : diff.entrySet()) {
-            String key = entry.getKey();
+        for (String key : diff.keySet()) {
             Object value = diff.get(key);
             sb.append(key + ": " + value + "\n");
         }
@@ -53,6 +62,6 @@ public class Differ {
         String absolutPath = String.valueOf(path.toAbsolutePath().normalize());
 
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(new File(absolutPath), new TypeReference<TreeMap<String, Object>>() { });
+        return objectMapper.readValue(new File(absolutPath), new TypeReference<LinkedHashMap<String, Object>>() { });
     }
 }
