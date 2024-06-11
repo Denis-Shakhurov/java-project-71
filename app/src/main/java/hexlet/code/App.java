@@ -29,7 +29,7 @@ public class App implements Callable<String> {
     Path filePath2;
 
     @Override
-    public String call() throws Exception {
+    public String call() {
         System.out.println(Differ.generate(filePath1, filePath2));
         return "";
     }

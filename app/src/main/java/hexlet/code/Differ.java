@@ -6,11 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Differ {
@@ -24,9 +21,8 @@ public class Differ {
             throw new RuntimeException(e);
         }
 
-        List<String> keys = new ArrayList<>(parseFile1.keySet());
+        Set<String> keys = new TreeSet<>(parseFile1.keySet());
         keys.addAll(parseFile2.keySet());
-        Collections.sort(keys);
 
         Map<String, Object> diff = new LinkedHashMap<>();
         for (String key : keys) {
