@@ -10,4 +10,4 @@
 [![asciicast]({https://ru.paste.pics/R4TAP}.svg)]({https://ru.paste.pics/R4TAP}) 
 
 ### show diff between files
-[![asciicast]({https://ru.paste.pics/R4TBI}.svg)]({https://ru.paste.pics/R4TBI})
+[![asciicast]({https://ru.paste.pics/R5959}.svg)]({https://ru.paste.pics/R5959})
