@@ -6,9 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 
 public class Differ {
@@ -16,28 +14,32 @@ public class Differ {
         Map<String, Object> parseFile1 = getData(pathFile1);
         Map<String, Object> parseFile2 = getData(pathFile2);
 
-        Map<String, Object> diff = new LinkedHashMap<>();
+        List<String> keys = new ArrayList<>(parseFile1.keySet());
+        keys.addAll(parseFile2.keySet());
+        Collections.sort(keys);
 
-        for (Map.Entry<String, Object> entry : parseFile1.entrySet()) {
-            String key = entry.getKey();
-            Object value1 = parseFile1.get(key);
-            Object value2 = parseFile2.get(key);
+        Map<String, Object> diff = new LinkedHashMap<>();
+        for (String key : keys) {
+            Object value1;
+            Object value2;
             if (!parseFile2.containsKey(key)) {
+                value1 = parseFile1.get(key);
                 diff.put("- " + key, value1);
-            } else if (parseFile2.containsKey(key) && value1.equals(value2)) {
-                diff.put("  " + key, value1);
-            } else if (parseFile2.containsKey(key) && !value1.equals(value2)) {
-                diff.put("- " + key, value1);
+            } else if (parseFile2.containsKey(key) && parseFile1.containsKey(key)) {
+                value1 = parseFile1.get(key);
+                value2 = parseFile2.get(key);
+                if (value1.equals(value2)) {
+                    diff.put("  " + key, value1);
+                } else {
+                    diff.put("- " + key, value1);
+                    diff.put("+ " + key, value2);
+                }
+            } else if (!parseFile1.containsKey(key)) {
+                value2 = parseFile2.get(key);
                 diff.put("+ " + key, value2);
             }
         }
-        for (String key : parseFile2.keySet()) {
-            Object value = parseFile2.get(key);
-            if (!parseFile1.containsKey(key)) {
-                diff.put("+ " + key, value);
-            }
-        }
-        diff.entrySet().stream().sorted(Map.Entry.<String, Object>comparingByKey());
+        
         StringBuilder sb = new StringBuilder("{\n");
         for (Map.Entry<String, Object> entry : diff.entrySet()) {
             String key = entry.getKey();
