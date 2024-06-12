@@ -16,8 +16,7 @@ run:
 	./gradlew run
 
 test:
-        ./gradlew test
-
+	.app/gradlew test
 
 report:
 	.app/gradlew jacocoTestReport

@@ -15,7 +15,6 @@ run-dist:
 run:
 	./gradlew run
 
-
 report:
 	./gradlew jacocoTestReport
 
