@@ -30,7 +30,7 @@ public class TestDiffer {
     public void testGenerate() {
         String expected = null;
         try {
-            expected = read("expected.Json");
+            expected = read("expectedJson.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
