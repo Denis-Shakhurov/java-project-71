@@ -34,7 +34,7 @@ public class TestDiffer {
         }
 
         assertTrue(map.containsKey("timeout"));
-        assertEquals(map.get("host"), "hexlet.io");
+        assertEquals(map.get("host"), "hexlet.com");
     }
     @Test
     public void testGenerate() {
