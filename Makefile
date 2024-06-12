@@ -16,13 +16,13 @@ run:
 	./gradlew run
 
 test:
-	.app/gradlew test
+	./gradlew test
 
 report:
-	.app/gradlew jacocoTestReport
+	./gradlew jacocoTestReport
 
 lint:
-	.app/gradlew checkstyleMain
+	./gradlew checkstyleMain
 
 check-deps:
 	./gradlew dependencyUpdates -Drevision=release
@@ -32,5 +32,5 @@ check-deps:
 
 build: report
 	lint
-	.app/gradlew build
-	.app/gradlew test
+	./gradlew build
+	./gradlew test
