@@ -25,15 +25,9 @@ public class TestDiffer {
     }
     @Test
     public void testGetData() throws IOException {
-        String path = getPath("testFile1.json").toString();
-        ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> map = new TreeMap<>();
-        try {
-            map = objectMapper.readValue(path, new TypeReference<TreeMap<String, Object>>() { });
-        } catch (JsonProcessingException e) {
-        }
-
-        //assertTrue(map.containsKey("timeout"));
+        Path path = getPath("testFile1.json");
+        Map<String, Object> map = Differ.getData(path);
+        assertTrue(map.containsKey("timeout"));
         assertEquals(map.get("host"), "hexlet.com");
     }
     @Test
