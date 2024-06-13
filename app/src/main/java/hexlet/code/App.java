@@ -20,8 +20,9 @@ public class App implements Callable<String> {
             description = "Print version information and exit.")
     boolean versionHelpRequested;
 
-    @Option(names = { "-f", "--format" }, paramLabel = "format", description = "output format [default: stylish]")
-    File archive;
+    @Option(names = { "-f", "--format" }, paramLabel = "format", description = "output format [default: stylish]",
+            defaultValue = "stylish")
+    String option;
 
     @Parameters(paramLabel = "filePath1", description = "path to first file")
     Path filePath1;
@@ -30,7 +31,7 @@ public class App implements Callable<String> {
 
     @Override
     public String call() {
-        System.out.println(Differ.generate(filePath1, filePath2));
+        System.out.println(Differ.generate(filePath1, filePath2, option));
         return "";
     }
 
