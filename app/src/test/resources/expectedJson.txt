@@ -1,8 +1,8 @@
-{
-- follow: false
-- host: hexlet.com
-+ host: hexlet.io
-- timeout: 50
-+ timeout: 20
-+ verbose: true
-}
+ {
+  - follow: false
+  - host: hexlet.com
+  + host: hexlet.io
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+ }
