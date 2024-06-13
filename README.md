@@ -14,3 +14,9 @@
 
 ### show diff between YAML files
 [![asciicast]({https://ru.paste.pics/R5TIB}.svg)]({https://ru.paste.pics/R5TIB})
+
+### show diff between nested JSON files
+[![asciicast]({https://ru.paste.pics/R5WFQ}.svg)]({https://ru.paste.pics/R5WFQ})
+
+### show diff between nested YAML files
+[![asciicast]({https://ru.paste.pics/R5WEN}.svg)]({https://ru.paste.pics/R5WEN})
