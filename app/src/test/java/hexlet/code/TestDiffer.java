@@ -32,14 +32,14 @@ public class TestDiffer {
     }
     @Test
     public void testGenerate() {
-        String expected = null;
+        String expected = "";
         try {
             expected = read("expectedJson.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        String actual = Differ.generate(getPath("testFile1.json"), getPath("testFile2.json"));
+        String actual = Differ.generate(getPath("testFile1.json"), getPath("testFile2.json"), "stylish");
         assertEquals(expected, actual);
     }
 }
