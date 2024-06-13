@@ -24,14 +24,14 @@ public class TestDiffer {
         return Files.readString(path);
     }
     @Test
-    public void testGetData() throws IOException {
+    public void testParse() throws IOException {
         Path path = getPath("testFile1.json");
         Map<String, Object> map = Parser.parse(path);
         assertTrue(map.containsKey("timeout"));
         assertEquals(map.get("host"), "hexlet.com");
     }
     @Test
-    public void testGenerate() {
+    public void testGenerateJSON() {
         String expected = "";
         try {
             expected = read("expectedJson.txt");
@@ -40,6 +40,18 @@ public class TestDiffer {
         }
 
         String actual = Differ.generate(getPath("testFile1.json"), getPath("testFile2.json"), "stylish");
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testGenerateYAML() {
+        String expected = "";
+        try {
+            expected = read("expectedYAML.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        String actual = Differ.generate(getPath("testFile1N.yml"), getPath("testFile2N.yml"), "stylish");
         assertEquals(expected, actual);
     }
 }
