@@ -9,5 +9,8 @@
 ### show set -h (--help)
 [![asciicast]({https://ru.paste.pics/R4TAP}.svg)]({https://ru.paste.pics/R4TAP}) 
 
-### show diff between files
+### show diff between JSON files
 [![asciicast]({https://ru.paste.pics/R5959}.svg)]({https://ru.paste.pics/R5959})
+
+### show diff between YAML files
+[![asciicast]({https://ru.paste.pics/R5TIB}.svg)]({https://ru.paste.pics/R5TIB})
