@@ -1,9 +1,5 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
@@ -16,9 +12,10 @@ public class Differ {
     public static String generate(Path pathFile1, Path pathFile2) {
         Map<String, Object> parseFile1;
         Map<String, Object> parseFile2;
+
         try {
-            parseFile1 = getData(pathFile1);
-            parseFile2 = getData(pathFile2);
+            parseFile1 = Parser.parse(pathFile1);
+            parseFile2 = Parser.parse(pathFile2);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -55,11 +52,5 @@ public class Differ {
         }
         sb.append("}");
         return sb.toString();
-    }
-    public static Map<String, Object> getData(Path path) throws IOException {
-        String absolutPath = String.valueOf(path.toAbsolutePath().normalize());
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(new File(absolutPath), new TypeReference<LinkedHashMap<String, Object>>() { });
     }
 }
