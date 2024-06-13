@@ -26,7 +26,7 @@ public class TestDiffer {
     @Test
     public void testGetData() throws IOException {
         Path path = getPath("testFile1.json");
-        Map<String, Object> map = Differ.getData(path);
+        Map<String, Object> map = Parser.parse(path);
         assertTrue(map.containsKey("timeout"));
         assertEquals(map.get("host"), "hexlet.com");
     }
