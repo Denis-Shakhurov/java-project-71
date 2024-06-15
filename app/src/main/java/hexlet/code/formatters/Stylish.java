@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Stylish {
     public static String stylish(List<Node> nodes) {
-        StringBuilder sb = new StringBuilder(" {\n");
+        StringBuilder sb = new StringBuilder("{\n");
         String space = " ";
         for (Node node : nodes) {
             String status = node.getStatus();
@@ -22,6 +22,6 @@ public class Stylish {
                     System.out.println("Unknown status");
             }
         }
-        return sb.append(" }").toString().trim();
+        return sb.append("}").toString().trim();
     }
 }
