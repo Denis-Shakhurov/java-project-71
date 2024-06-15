@@ -1,8 +1,5 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,7 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class TestDiffer {
     private Path getPath(String filename) {
@@ -31,42 +27,26 @@ public class TestDiffer {
         assertEquals(map.get("host"), "hexlet.com");
     }
     @Test
-    public void testGenerateJSON() {
-        String expected = "";
-        try {
-            expected = read("expectedJson.txt");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+    public void testGenerateJSON() throws IOException{
+        String expected = read("expectedJson.txt");
         String actual = Differ.generate(getPath("testFile1.json"),
                 getPath("testFile2.json"), "stylish");
         assertEquals(expected, actual);
     }
     @Test
-    public void testGenerateYAML() {
-        String expected = "";
-        try {
-            expected = read("expectedYAML.txt");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void testGenerateYAML() throws IOException {
+        String expected = read("expectedYAML.txt");
 
         String actual = Differ.generate(getPath("testFile1N.yml"),
                 getPath("testFile2N.yml"), "stylish");
         assertEquals(expected, actual);
     }
     @Test
-    public void testGenerateJSONPlain() {
-        String expected = "";
-        try {
-            expected = read("expectedJSONPlain.txt");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void testGenerateJSONPlain() throws IOException {
+        String expected = read("expectedJSONPlain.txt");
 
         String actual = Differ.generate(getPath("testNestedJSON1.json"),
-                getPath("testNestedJSON1.json"), "plain");
+                getPath("testNestedJSON2.json"), "plain");
         assertEquals(expected, actual);
     }
 }
