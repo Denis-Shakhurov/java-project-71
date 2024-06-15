@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 
 public class Differ {
-    public static String generate(Path pathFile1, Path pathFile2, String option) {
+    public static String generate(Path pathFile1, Path pathFile2, String nameFormat) {
         Map<String, Object> parseFile1;
         Map<String, Object> parseFile2;
 
@@ -21,14 +21,9 @@ public class Differ {
             throw new RuntimeException(e);
         }
 
-        List<Node> diff = getMapDiffer(parseFile1, parseFile2);
-        String differ = "";
-        switch (option) {
-            case "stylish" : differ = Formatter.stylish(diff);
-            default :
-                System.out.println("Unknown format option");
-        }
+        List<Node> nodes = getMapDiffer(parseFile1, parseFile2);
 
+        String differ = Formatter.getFormat(nodes, nameFormat);
         return differ;
     }
     public static List<Node> getMapDiffer(Map<String, Object> mapParseFile1, Map<String, Object> mapParseFile2) {
@@ -41,7 +36,7 @@ public class Differ {
             Object value2;
             if (!mapParseFile2.containsKey(key)) {
                 value1 = mapParseFile1.get(key);
-                diff.add(new Node(key, value1, "deleted"));
+                diff.add(new Node(key, value1, "remove"));
             } else if (mapParseFile2.containsKey(key) && mapParseFile1.containsKey(key)) {
                 value1 = mapParseFile1.get(key);
                 value2 = mapParseFile2.get(key);
@@ -49,10 +44,10 @@ public class Differ {
                     diff.add(new Node(key, value1, "unchanged"));
                 } else {
                     diff.add(new Node(key, value1, "deleted"));
-                    diff.add(new Node(key, value2, "added"));
+                    diff.add(new Node(key, value2, "update"));
                 }
             } else if (!mapParseFile1.containsKey(key)) {
-                value2 = String.valueOf(mapParseFile2.get(key));
+                value2 = mapParseFile2.get(key);
                 diff.add(new Node(key, value2, "added"));
             }
         }

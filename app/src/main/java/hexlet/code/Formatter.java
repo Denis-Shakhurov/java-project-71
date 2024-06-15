@@ -1,23 +1,20 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Plain;
+import hexlet.code.formatters.Stylish;
+
 import java.util.List;
 
 public class Formatter {
-    public static String stylish(List<Node> diff) {
-        StringBuilder sb = new StringBuilder(" {\n");
-        String space = " ";
-        for (Node node : diff) {
-            String status = node.getStatus();
-            String name = node.getName();
-            String value = String.valueOf(node.getValue());
-            switch (status) {
-                case "unchanged" : sb.append(space.repeat(4) + name + ": " + value + "\n"); break;
-                case "added" : sb.append(space.repeat(2) + "+ " + name + ": " + value + "\n"); break;
-                case "deleted" : sb.append(space.repeat(2) + "- " + name + ": " + value + "\n"); break;
-                default :
-                    System.out.println("Unknown status");
-            }
+
+    public static String getFormat(List<Node> nodes, String nameFormat) {
+        String diff = "";
+        switch (nameFormat) {
+            case "stylish" : diff = Stylish.stylish(nodes); break;
+            case "plain" : diff = Plain.plain(nodes); break;
+            default :
+                System.out.println("Unknown format");
         }
-        return sb.append(" }").toString();
+        return diff;
     }
 }

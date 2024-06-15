@@ -13,7 +13,7 @@ import java.util.Map;
 public class Parser {
     public static Map<String, Object> parse(Path path) throws IOException {
         String absolutPath = String.valueOf(path.toAbsolutePath().normalize());
-        String format = getFormat(absolutPath);
+        String format = getTypeFile(absolutPath);
 
         Map<String, Object> mapParse = new LinkedHashMap<>();
         switch (format) {
@@ -28,7 +28,7 @@ public class Parser {
         }
         return mapParse;
     }
-    public static String getFormat(String path) {
+    public static String getTypeFile(String path) {
         return path.substring(path.lastIndexOf("."), path.length());
     }
 }
