@@ -1,6 +1,11 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.LinkedList;
+
 
 public class Data {
     public static List<Node> getData(Map<String, Object> mapParseFile1, Map<String, Object> mapParseFile2) {
