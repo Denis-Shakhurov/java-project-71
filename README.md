@@ -1,6 +1,5 @@
 # java-project-71
 
-### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Denis-Shakhurov/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Denis-Shakhurov/java-project-71/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b2c8c5147c642df541c0/maintainability)](https://codeclimate.com/github/Denis-Shakhurov/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b2c8c5147c642df541c0/test_coverage)](https://codeclimate.com/github/Denis-Shakhurov/java-project-71/test_coverage)
@@ -20,3 +19,6 @@
 
 ### show diff between nested YAML files
 [![asciicast]({https://ru.paste.pics/R5WEN}.svg)]({https://ru.paste.pics/R5WEN})
+
+### show diff between nested JSON files whith -f 'plain'
+[![asciicast]({https://ru.paste.pics/R6H47}.svg)]({https://ru.paste.pics/R6H47})
