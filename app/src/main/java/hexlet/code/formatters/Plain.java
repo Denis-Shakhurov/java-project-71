@@ -33,8 +33,7 @@ public class Plain {
             result = "null";
         } else if (value instanceof String) {
             result = "'" + result + "'";
-        } else if (value instanceof Map
-        || value instanceof List) {
+        } else if (value instanceof Map || value instanceof List) {
             result = "[complex value]";
         }
         return result;
