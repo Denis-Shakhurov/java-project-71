@@ -39,7 +39,8 @@ public class TestDiffer {
             throw new RuntimeException(e);
         }
 
-        String actual = Differ.generate(getPath("testFile1.json"), getPath("testFile2.json"), "stylish");
+        String actual = Differ.generate(getPath("testFile1.json"),
+                getPath("testFile2.json"), "stylish");
         assertEquals(expected, actual);
     }
     @Test
@@ -51,7 +52,21 @@ public class TestDiffer {
             throw new RuntimeException(e);
         }
 
-        String actual = Differ.generate(getPath("testFile1N.yml"), getPath("testFile2N.yml"), "stylish");
+        String actual = Differ.generate(getPath("testFile1N.yml"),
+                getPath("testFile2N.yml"), "stylish");
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testGenerateJSONPlain() {
+        String expected = "";
+        try {
+            expected = read("expectedJSONPlain.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        String actual = Differ.generate(getPath("testNestedJSON1.json"),
+                getPath("testNestedJSON1.json"), "plain");
         assertEquals(expected, actual);
     }
 }
