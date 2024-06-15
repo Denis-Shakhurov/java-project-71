@@ -1,4 +1,4 @@
- {
+{
   + chars1: [a, b, c]
   - chars2: [d, e, f]
   + checked: true
@@ -14,4 +14,4 @@
   + setting1: Another value
   - setting2: 200
   + setting2: 300
- }
+}
