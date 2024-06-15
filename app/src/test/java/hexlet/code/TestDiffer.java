@@ -27,8 +27,7 @@ public class TestDiffer {
         assertEquals(map.get("host"), "hexlet.io");
     }
     @Test
-    public void testGenerateJSON() throws IOException{
-        //String expected = read("expectedJson.txt");
+    public void testGenerateJSON() {
         String expected = "{\n" +
                 "  - follow: false\n" +
                 "    host: hexlet.io\n" +
@@ -42,8 +41,7 @@ public class TestDiffer {
         assertEquals(expected, actual);
     }
     @Test
-    public void testGenerateYAML() throws IOException {
-        //String expected = read("expectedYAML.txt");
+    public void testGenerateYAML() {
         String expected = "{\n" +
                 "  + chars1: [a, b, c]\n" +
                 "  - chars2: [d, e, f]\n" +
@@ -66,8 +64,7 @@ public class TestDiffer {
         assertEquals(expected, actual);
     }
     @Test
-    public void testGenerateJSONPlain() throws IOException {
-        //String expected = read("expectedJSONPlain.txt");
+    public void testGenerateJSONPlain() {
         String expected = "Property 'chars2' was update. From [complex value] to false\n" +
                 "Property 'checked' was update. From false to true\n" +
                 "Property 'default' was update. From null to [complex value]\n" +
@@ -83,6 +80,13 @@ public class TestDiffer {
                 "Property 'setting3' was update. From true to 'none'";
         String actual = Differ.generate(getPath("testNestedJSON1.json"),
                 getPath("testNestedJSON2.json"), "plain");
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testSerializingJSON() throws IOException {
+        String expected = read("expectedJSON.json");
+        String actual = Differ.generate(getPath("testNestedJSON1.json"),
+                getPath("testNestedJSON2.json"), "json");
         assertEquals(expected, actual);
     }
 }
