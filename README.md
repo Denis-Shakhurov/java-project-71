@@ -22,3 +22,6 @@
 
 ### show diff between nested JSON files whith -f 'plain'
 [![asciicast]({https://ru.paste.pics/R6H47}.svg)]({https://ru.paste.pics/R6H47})
+
+### show diff between nested JSON files whith -f 'json'
+[![asciicast]({https://ru.paste.pics/R6N2C}.svg)]({https://ru.paste.pics/R6N2C})
