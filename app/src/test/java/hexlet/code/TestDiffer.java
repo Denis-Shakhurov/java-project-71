@@ -22,12 +22,12 @@ public class TestDiffer {
     @Test
     public void testParse() {
         Path path = getPath("testFile1.json");
-        Map<String, Object> map = Parser.parse(path);
+        Map<String, Object> map = Parser.parse(path, "json");
         assertTrue(map.containsKey("timeout"));
         assertEquals(map.get("host"), "hexlet.io");
     }
     @Test
-    public void testGenerateJSON() {
+    public void testGenerateJSON() throws Exception {
         String expected = "{\n" +
                 "  - follow: false\n" +
                 "    host: hexlet.io\n" +
@@ -36,12 +36,12 @@ public class TestDiffer {
                 "  + timeout: 20\n" +
                 "  + verbose: true\n" +
                 "}";
-        String actual = Differ.generate(getPath("testFile1.json"),
-                getPath("testFile2.json"), "stylish");
+        String actual = Differ.generate(getPath("testFile1.json").toString(),
+                getPath("testFile2.json").toString(), "stylish");
         assertEquals(expected, actual);
     }
     @Test
-    public void testGenerateYAML() {
+    public void testGenerateYAML() throws Exception {
         String expected = "{\n" +
                 "  + chars1: [a, b, c]\n" +
                 "  - chars2: [d, e, f]\n" +
@@ -59,12 +59,12 @@ public class TestDiffer {
                 "  - setting2: 200\n" +
                 "  + setting2: 300\n" +
                 "}";
-        String actual = Differ.generate(getPath("testFile1N.yml"),
-                getPath("testFile2N.yml"), "stylish");
+        String actual = Differ.generate(getPath("testFile1N.yml").toString(),
+                getPath("testFile2N.yml").toString(), "stylish");
         assertEquals(expected, actual);
     }
     @Test
-    public void testGenerateJSONPlain() {
+    public void testGenerateJSONPlain() throws Exception {
         String expected = "Property 'chars2' was update. From [complex value] to false\n" +
                 "Property 'checked' was update. From false to true\n" +
                 "Property 'default' was update. From null to [complex value]\n" +
@@ -78,15 +78,15 @@ public class TestDiffer {
                 "Property 'setting1' was update. From 'Some value' to 'Another value'\n" +
                 "Property 'setting2' was update. From 200 to 300\n" +
                 "Property 'setting3' was update. From true to 'none'";
-        String actual = Differ.generate(getPath("testNestedJSON1.json"),
-                getPath("testNestedJSON2.json"), "plain");
+        String actual = Differ.generate(getPath("testNestedJSON1.json").toString(),
+                getPath("testNestedJSON2.json").toString(), "plain");
         assertEquals(expected, actual);
     }
     @Test
-    public void testSerializingJSON() throws IOException {
+    public void testSerializingJSON() throws Exception {
         String expected = read("expectedJSON.json");
-        String actual = Differ.generate(getPath("testNestedJSON1.json"),
-                getPath("testNestedJSON2.json"), "json");
+        String actual = Differ.generate(getPath("testNestedJSON1.json").toString(),
+                getPath("testNestedJSON2.json").toString(), "json");
         assertEquals(expected, actual);
     }
 }

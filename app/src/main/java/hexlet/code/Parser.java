@@ -11,17 +11,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> parse(Path path) {
+    public static Map<String, Object> parse(Path path, String type) {
         String absolutPath = "";
         if (path != null) {
             absolutPath = String.valueOf(path.toAbsolutePath().normalize());
         } else {
             System.out.println("Path is not correct");
         }
-        String format = getTypeFile(absolutPath);
 
         Map<String, Object> mapParse = new LinkedHashMap<>();
-        switch (format) {
+        switch (type) {
             case ".json" :
                 ObjectMapper jsonMapper = new ObjectMapper();
                 try {
@@ -42,8 +41,5 @@ public class Parser {
                 System.out.println("Unknown format file");
         }
         return mapParse;
-    }
-    public static String getTypeFile(String path) {
-        return path.substring(path.lastIndexOf("."), path.length());
     }
 }
