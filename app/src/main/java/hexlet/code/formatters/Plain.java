@@ -15,7 +15,7 @@ public class Plain {
             String status = nodes.get(i).getStatus();
 
             if (status.equals("update")) {
-                sb.append("Property '" + name + "' was update. From " + printValue(nodes.get(i - 1))
+                sb.append("Property '" + name + "' was updated. From " + printValue(nodes.get(i - 1))
                         + " to " + printValue(nodes.get(i)) + "\n");
             } else if (status.equals("added")) {
                 sb.append("Property '" + name + "' was added with value: "

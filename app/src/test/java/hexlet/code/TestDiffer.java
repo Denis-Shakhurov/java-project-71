@@ -1,14 +1,16 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class TestDiffer {
     private Path getPath(String filename) {
@@ -22,7 +24,7 @@ public class TestDiffer {
     @Test
     public void testParse() {
         Path path = getPath("testFile1.json");
-        Map<String, Object> map = Parser.parse(path, "json");
+        Map<String, Object> map = Parser.parse(path, ".json");
         assertTrue(map.containsKey("timeout"));
         assertEquals(map.get("host"), "hexlet.io");
     }

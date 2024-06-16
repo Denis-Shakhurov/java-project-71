@@ -36,7 +36,7 @@ public class Differ {
     public static String getTypeFile(String path) {
         String type = "";
         if (path != null || path != "") {
-            type = path.substring(path.lastIndexOf("."), path.length());
+            type = path.substring(path.lastIndexOf(".") + 1, path.length());
         } else {
             System.out.println("Path is not correct");
         }

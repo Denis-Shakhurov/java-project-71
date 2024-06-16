@@ -21,7 +21,7 @@ public class Parser {
 
         Map<String, Object> mapParse = new LinkedHashMap<>();
         switch (type) {
-            case ".json" :
+            case "json" :
                 ObjectMapper jsonMapper = new ObjectMapper();
                 try {
                     mapParse = jsonMapper.readValue(new File(absolutPath), new TypeReference<>() { });
@@ -29,7 +29,7 @@ public class Parser {
                     throw new RuntimeException(e);
                 }
                 break;
-            case ".yml", ".yaml" :
+            case "yml", "yaml" :
                 ObjectMapper ymlMapper = new YAMLMapper();
                 try {
                     mapParse = ymlMapper.readValue(new File(absolutPath), new TypeReference<>() { });
