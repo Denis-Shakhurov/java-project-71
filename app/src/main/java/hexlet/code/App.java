@@ -9,28 +9,28 @@ import java.util.concurrent.Callable;
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "Differ v 1.0",
         description = "Compares two configuration files and shows a difference.")
 
-public class App implements Callable<String> {
+public final class App implements Callable<String> {
     @Option(names = {"-h", "--help"}, usageHelp = true,
             description = "Show this help message and exit.")
-    boolean usageHelpRequested;
+    private boolean usageHelpRequested;
 
     @Option(names = {"-v", "--version"}, versionHelp = true,
             description = "Print version information and exit.")
-    boolean versionHelpRequested;
+    private boolean versionHelpRequested;
 
     @Option(names = { "-f", "--format" }, paramLabel = "format", description = "output format [default: stylish]",
             defaultValue = "stylish")
-    String option;
+    private String option;
 
     @Parameters(paramLabel = "filePath1", description = "path to first file")
-    String filePath1;
+    private String filePath1;
     @Parameters(paramLabel = "filePath2", description = "path to second file")
-    String filePath2;
+    private String filePath2;
 
     @Override
     public String call() throws Exception {
         System.out.println(Differ.generate(filePath1, filePath2, option));
-        return "";
+        return null;
     }
 
     public static void main(String[] args) {
