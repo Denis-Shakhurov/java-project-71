@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class Node {
+public final class Node {
     private String name;
     private Object value;
     private String status;
@@ -15,23 +15,12 @@ public class Node {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Object getValue() {
         return value;
-    }
-
-    public void setValue(Object value) {
-        this.value = value;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

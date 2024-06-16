@@ -24,7 +24,7 @@ public class TestDiffer {
     @Test
     public void testParse() {
         Path path = getPath("testFile1.json");
-        Map<String, Object> map = Parser.parse(path, ".json");
+        Map<String, Object> map = Parser.parse(path, "json");
         assertTrue(map.containsKey("timeout"));
         assertEquals(map.get("host"), "hexlet.io");
     }
@@ -68,18 +68,18 @@ public class TestDiffer {
     @Test
     public void testGenerateJSONPlain() throws Exception {
         String expected = "Property 'chars2' was update. From [complex value] to false\n" +
-                "Property 'checked' was update. From false to true\n" +
-                "Property 'default' was update. From null to [complex value]\n" +
+                "Property 'checked' was updated. From false to true\n" +
+                "Property 'default' was updated. From null to [complex value]\n" +
                 "Property 'id' was update. From 45 to null\n" +
                 "Property 'key1' was removed\n" +
                 "Property 'key2' was added with value: 'value2'\n" +
-                "Property 'numbers2' was update. From [complex value] to [complex value]\n" +
+                "Property 'numbers2' was updated. From [complex value] to [complex value]\n" +
                 "Property 'numbers3' was removed\n" +
                 "Property 'numbers4' was added with value: [complex value]\n" +
                 "Property 'obj1' was added with value: [complex value]\n" +
-                "Property 'setting1' was update. From 'Some value' to 'Another value'\n" +
-                "Property 'setting2' was update. From 200 to 300\n" +
-                "Property 'setting3' was update. From true to 'none'";
+                "Property 'setting1' was updated. From 'Some value' to 'Another value'\n" +
+                "Property 'setting2' was updated. From 200 to 300\n" +
+                "Property 'setting3' was updated. From true to 'none'";
         String actual = Differ.generate(getPath("testNestedJSON1.json").toString(),
                 getPath("testNestedJSON2.json").toString(), "plain");
         assertEquals(expected, actual);
