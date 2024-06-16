@@ -7,7 +7,7 @@ import picocli.CommandLine.Parameters;
 import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
-@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "Help demo v1.2.3",
+@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "Differ v 1.0",
         description = "Compares two configuration files and shows a difference.")
 
 public class App implements Callable<String> {
@@ -15,7 +15,7 @@ public class App implements Callable<String> {
             description = "Show this help message and exit.")
     boolean usageHelpRequested;
 
-    @Option(names = {"-V", "--version"}, versionHelp = true,
+    @Option(names = {"-v", "--version"}, versionHelp = true,
             description = "Print version information and exit.")
     boolean versionHelpRequested;
 

@@ -22,11 +22,14 @@ public class Json {
             String key = node.getName();
             Object value = node.getValue();
             String status = node.getStatus();
-            switch (status) {
-                case "update" : mapJson.get("changed").put(key, value); break;
-                case "deleted", "remove" : mapJson.get("deleted").put(key, value); break;
-                case "added" : mapJson.get("added").put(key, value); break;
-                default : System.out.println("Unknown status"); break;
+            if (!status.equals("unchanged")) {
+                switch (status) {
+                    case "update": mapJson.get("changed").put(key, value); break;
+                    case "deleted", "remove": mapJson.get("deleted").put(key, value); break;
+                    case "added": mapJson.get("added").put(key, value); break;
+                    default:
+                        System.out.println("Unknown status"); break;
+                }
             }
         }
         String fileJson = "";

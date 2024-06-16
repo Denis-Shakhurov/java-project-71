@@ -24,7 +24,7 @@ public class Plain {
                 sb.append("Property '" + name + "' was removed\n");
             }
         }
-        return sb.toString().trim();
+        return sb.toString();
     }
     public static String printValue(Node node) {
         Object value = node.getValue();
