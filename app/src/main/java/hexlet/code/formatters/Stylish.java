@@ -22,6 +22,6 @@ public class Stylish {
                     System.out.println("Unknown status");
             }
         }
-        return sb.append("}").toString();
+        return sb.append("}").toString().trim();
     }
 }
