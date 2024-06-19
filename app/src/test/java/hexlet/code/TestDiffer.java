@@ -6,10 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class TestDiffer {
@@ -65,7 +63,7 @@ public class TestDiffer {
     }
     @Test
     public void testSerializingJSONToJSON() throws Exception {
-        String expected = read("expectedJSON.json");
+        String expected = read("expectedJSONToJSON.json");
         String actual = Differ.generate(getPath("testNestedJSON1.json").toString(),
                 getPath("testNestedJSON2.json").toString(), "json");
         assertEquals(expected, actual);
