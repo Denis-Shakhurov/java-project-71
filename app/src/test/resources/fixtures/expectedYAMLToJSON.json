@@ -1,0 +1,23 @@
+{
+  "added" : {
+    "chars1" : [ "a", "b", "c" ],
+    "checked" : true,
+    "key2" : "value2",
+    "numbers2" : [ 22, 33, 44, 55 ],
+    "numbers4" : [ 4, 5, 6 ]
+  },
+  "changed" : {
+    "id" : null,
+    "setting1" : "Another value",
+    "setting2" : 300
+  },
+  "deleted" : {
+    "chars2" : [ "d", "e", "f" ],
+    "default" : null,
+    "id" : 45,
+    "key1" : "value1",
+    "numbers1" : [ 1, 2, 3, 4 ],
+    "setting1" : "Some value",
+    "setting2" : 200
+  }
+}
