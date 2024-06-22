@@ -19,14 +19,14 @@ public class Data {
             Object value2;
             if (!parseFile2.containsKey(key)) {
                 value1 = parseFile1.get(key);
-                result.add(createMap("remove", key, value1));
+                result.add(createMap("deleted", key, value1));
             } else if (parseFile2.containsKey(key) && parseFile1.containsKey(key)) {
                 value1 = parseFile1.get(key);
                 value2 = parseFile2.get(key);
                 if (String.valueOf(value1).equals(String.valueOf(value2))) {
                     result.add(createMap("unchanged", key, value1));
                 } else {
-                    result.add(createMap("deleted", key, value1));
+                    result.add(createMap("changed", key, value1));
                     result.add(createMap("update", key, value2));
                 }
             } else if (!parseFile1.containsKey(key)) {
