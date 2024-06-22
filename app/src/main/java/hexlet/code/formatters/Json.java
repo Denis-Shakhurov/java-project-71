@@ -31,7 +31,7 @@ public class Json {
             if (!status.equals("unchanged")) {
                 switch (status) {
                     case "update" : mapJson.get("changed").put(keyMapJson, value); break;
-                    case "deleted" : mapJson.get("deleted").put(keyMapJson, value); break;
+                    case "deleted", "changed" : mapJson.get("deleted").put(keyMapJson, value); break;
                     case "added" : mapJson.get("added").put(keyMapJson, value); break;
                     default:
                         System.out.println("Unknown status"); break;
