@@ -28,7 +28,7 @@ public class Plain {
                 sb.append("Property '" + keyPrint + "' was removed\n");
             }
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
     public static String printValue(Map<String, Object> map) {
         var keys = map.keySet();
