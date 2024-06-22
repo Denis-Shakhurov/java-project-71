@@ -24,7 +24,7 @@ public class Plain {
             } else if (status.equals("added")) {
                 sb.append("Property '" + keyPrint + "' was added with value: "
                         + printValue(differs.get(i)) +  "\n");
-            } else if (status.equals("remove")) {
+            } else if (status.equals("deleted")) {
                 sb.append("Property '" + keyPrint + "' was removed\n");
             }
         }
