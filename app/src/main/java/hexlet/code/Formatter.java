@@ -5,17 +5,17 @@ import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
 import java.util.List;
+import java.util.Map;
 
 public class Formatter {
 
-    public static String getFormat(List<Node> nodes, String nameFormat) {
+    public static String format(List<Map<String, Object>> differs, String nameFormat) {
         String diff = "";
         switch (nameFormat) {
-            case "stylish" : diff = Stylish.stylish(nodes); break;
-            case "plain" : diff = Plain.plain(nodes); break;
-            case "json" : diff = Json.createJson(nodes); break;
-            default :
-                System.out.println("Unknown format");
+            case "stylish" : diff = Stylish.stylish(differs); break;
+            case "plain" : diff = Plain.plain(differs); break;
+            case "json" : diff = Json.createJson(differs); break;
+            default : throw new RuntimeException("Unknown format");
         }
         return diff;
     }

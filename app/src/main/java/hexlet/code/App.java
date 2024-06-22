@@ -10,13 +10,6 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 
 public final class App implements Callable<String> {
-    @Option(names = {"-h", "--help"}, usageHelp = true,
-            description = "Show this help message and exit.")
-    private boolean usageHelpRequested;
-
-    @Option(names = {"-v", "--version"}, versionHelp = true,
-            description = "Print version information and exit.")
-    private boolean versionHelpRequested;
 
     @Option(names = { "-f", "--format" }, paramLabel = "format", description = "output format [default: stylish]",
             defaultValue = "stylish")
