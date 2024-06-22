@@ -20,19 +20,19 @@ public class Json {
             var keys = diff.keySet();
             String[] keyAndStatus;
             String status = "";
-            String keyPrint = "";
+            String keyMapJson = "";
             Object value = null;
             for (var key : keys) {
                 keyAndStatus = key.split(" ");
                 status = keyAndStatus[0];
-                keyPrint = keyAndStatus[1];
+                keyMapJson = keyAndStatus[1];
                 value = diff.get(key);
             }
             if (!status.equals("unchanged")) {
                 switch (status) {
-                    case "update": mapJson.get("changed").put(keyPrint, value); break;
-                    case "deleted", "remove": mapJson.get("deleted").put(keyPrint, value); break;
-                    case "added": mapJson.get("added").put(keyPrint, value); break;
+                    case "update" : mapJson.get("changed").put(keyMapJson, value); break;
+                    case "deleted" : mapJson.get("deleted").put(keyMapJson, value); break;
+                    case "added" : mapJson.get("added").put(keyMapJson, value); break;
                     default:
                         System.out.println("Unknown status"); break;
                 }
