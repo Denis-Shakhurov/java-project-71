@@ -8,15 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Formatter {
+    public static String formatToStylish(List<Map<String, Object>> differs) {
+        return Stylish.convertToStylish(differs);
+    }
+    public static String formatToPlain(List<Map<String, Object>> differs) {
+        return Plain.convertToPlain(differs);
+    }
+    public static String formatToJson(List<Map<String, Object>> differs) {
+        return Json.createJson(differs);
+    }
 
-    public static String format(List<Map<String, Object>> differs, String nameFormat) {
-        String diff = "";
-        switch (nameFormat) {
-            case "stylish" : diff = Stylish.stylish(differs); break;
-            case "plain" : diff = Plain.plain(differs); break;
-            case "json" : diff = Json.createJson(differs); break;
-            default : throw new RuntimeException("Unknown format");
-        }
-        return diff;
+
+    public static String format(String nameFormat) {
+        return nameFormat.toLowerCase().trim();
     }
 }
