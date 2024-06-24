@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String stylish(List<Map<String, Object>> differs) {
+    public static String convertToStylish(List<Map<String, Object>> differs) {
         StringBuilder sb = new StringBuilder("{\n");
 
         for (Map<String, Object> diff : differs) {

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Plain {
-    public static String plain(List<Map<String, Object>> differs) {
+    public static String convertToPlain(List<Map<String, Object>> differs) {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < differs.size(); i++) {
@@ -17,15 +17,19 @@ public class Plain {
                 status = keyAndStatus[0];
                 keyPrint = keyAndStatus[1];
             }
-
-            if (status.equals("update")) {
-                sb.append("Property '" + keyPrint + "' was updated. From " + printValue(differs.get(i - 1))
-                        + " to " + printValue(differs.get(i)) + "\n");
-            } else if (status.equals("added")) {
-                sb.append("Property '" + keyPrint + "' was added with value: "
-                        + printValue(differs.get(i)) +  "\n");
-            } else if (status.equals("deleted")) {
-                sb.append("Property '" + keyPrint + "' was removed\n");
+            if (!status.equals("unchanged") && !status.equals("changed")) {
+                switch (status) {
+                    case "update":
+                        sb.append("Property '" + keyPrint + "' was updated. From " + printValue(differs.get(i - 1))
+                                + " to " + printValue(differs.get(i)) + "\n"); break;
+                    case "added":
+                        sb.append("Property '" + keyPrint + "' was added with value: "
+                                + printValue(differs.get(i)) + "\n"); break;
+                    case "deleted":
+                        sb.append("Property '" + keyPrint + "' was removed\n"); break;
+                    default:
+                        System.out.println("Unknown status");
+                }
             }
         }
         return sb.toString().trim();
