@@ -1,5 +1,10 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
+import hexlet.code.formatters.Plain;
+import hexlet.code.formatters.Stylish;
+
+import javax.management.remote.JMXServerErrorException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,9 +22,18 @@ public class Differ {
         Map<String, Object> parseFile1 = Parser.parse(data1, fileType1);
         Map<String, Object> parseFile2 = Parser.parse(data2, fileType2);
 
-        List<Map<String, Object>> differ = Data.getData(parseFile1, parseFile2);
+        List<Map<String, Object>> differs = Data.getData(parseFile1, parseFile2);
 
-        return Formatter.format(differ, nameFormat);
+        String format = Formatter.format(nameFormat);
+        String differ = "";
+        switch (format) {
+            case "stylish" : differ = Formatter.formatToStylish(differs); break;
+            case "plain" : differ = Formatter.formatToPlain(differs); break;
+            case "json" : differ = Formatter.formatToJson(differs); break;
+            default :
+                System.out.println("Unknown format");
+        }
+        return differ;
     }
     public static String generate(String path1, String path2) {
         return generate(path1, path2, "stylish");
