@@ -19,14 +19,11 @@ public class Plain {
             }
             if (!status.equals("unchanged") && !status.equals("changed")) {
                 switch (status) {
-                    case "update":
-                        sb.append("Property '" + keyPrint + "' was updated. From " + printValue(differs.get(i - 1))
+                    case "update": sb.append("Property '" + keyPrint + "' was updated. From " + printValue(differs.get(i - 1))
                                 + " to " + printValue(differs.get(i)) + "\n"); break;
-                    case "added":
-                        sb.append("Property '" + keyPrint + "' was added with value: "
+                    case "added": sb.append("Property '" + keyPrint + "' was added with value: "
                                 + printValue(differs.get(i)) + "\n"); break;
-                    case "deleted":
-                        sb.append("Property '" + keyPrint + "' was removed\n"); break;
+                    case "deleted": sb.append("Property '" + keyPrint + "' was removed\n"); break;
                     default:
                         System.out.println("Unknown status");
                 }
