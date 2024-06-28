@@ -1,1 +1,50 @@
-[{"unchanged chars1":["a","b","c"]},{"changed chars2":["d","e","f"]},{"update chars2":false},{"changed checked":false},{"update checked":true},{"changed default":null},{"update default":["value1","value2"]},{"changed id":45},{"update id":null},{"deleted key1":"value1"},{"added key2":"value2"},{"unchanged numbers1":[1,2,3,4]},{"changed numbers2":[2,3,4,5]},{"update numbers2":[22,33,44,55]},{"deleted numbers3":[3,4,5]},{"added numbers4":[4,5,6]},{"added obj1":{"nestedKey":"value","isNested":true}},{"changed setting1":"Some value"},{"update setting1":"Another value"},{"changed setting2":200},{"update setting2":300},{"changed setting3":true},{"update setting3":"none"}]
+[ {
+  "unchanged chars1" : [ "a", "b", "c" ]
+}, {
+  "changed chars2" : [ "d", "e", "f" ]
+}, {
+  "update chars2" : false
+}, {
+  "changed checked" : false
+}, {
+  "update checked" : true
+}, {
+  "changed default" : null
+}, {
+  "update default" : [ "value1", "value2" ]
+}, {
+  "changed id" : 45
+}, {
+  "update id" : null
+}, {
+  "deleted key1" : "value1"
+}, {
+  "added key2" : "value2"
+}, {
+  "unchanged numbers1" : [ 1, 2, 3, 4 ]
+}, {
+  "changed numbers2" : [ 2, 3, 4, 5 ]
+}, {
+  "update numbers2" : [ 22, 33, 44, 55 ]
+}, {
+  "deleted numbers3" : [ 3, 4, 5 ]
+}, {
+  "added numbers4" : [ 4, 5, 6 ]
+}, {
+  "added obj1" : {
+    "nestedKey" : "value",
+    "isNested" : true
+  }
+}, {
+  "changed setting1" : "Some value"
+}, {
+  "update setting1" : "Another value"
+}, {
+  "changed setting2" : 200
+}, {
+  "update setting2" : 300
+}, {
+  "changed setting3" : true
+}, {
+  "update setting3" : "none"
+} ]
