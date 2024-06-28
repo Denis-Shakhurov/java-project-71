@@ -19,20 +19,13 @@ public class Differ {
 
         List<Map<String, Object>> differs = Data.getData(parseFile1, parseFile2);
 
-        String format = Formatter.format(nameFormat);
-        String differ = "";
-        switch (format) {
-            case "stylish" : differ = Formatter.formatToStylish(differs); break;
-            case "plain" : differ = Formatter.formatToPlain(differs); break;
-            case "json" : differ = Formatter.formatToJson(differs); break;
-            default :
-                System.out.println("Unknown format");
-        }
-        return differ;
+        return Formatter.format(differs, nameFormat);
     }
+
     public static String generate(String path1, String path2) {
         return generate(path1, path2, "stylish");
     }
+
     private static Path fileToPath(String fileName) throws Exception {
         Path path = Paths.get(fileName).toAbsolutePath().normalize();
 
@@ -41,6 +34,7 @@ public class Differ {
         }
         return path;
     }
+
     public static String fileToString(String fileName) {
         Path path;
         String result;
