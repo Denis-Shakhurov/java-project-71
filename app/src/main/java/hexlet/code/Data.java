@@ -36,6 +36,7 @@ public class Data {
         }
         return result;
     }
+
     public static Map<String, Object> createMap(String status, String key, Object value) {
         Map<String, Object> map = new HashMap<>();
         map.put(status + " " + key, value);
