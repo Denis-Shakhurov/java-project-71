@@ -25,8 +25,7 @@ public class Stylish {
                 case "update" : sb.append("  " + "+ " + key + ": " + value + "\n"); break;
                 case "changed" : sb.append("  " + "- " + key + ": " + value + "\n"); break;
                 case "deleted" : sb.append("  " + "- " + key + ": " + value + "\n"); break;
-                default :
-                    System.out.println("Unknown status");
+                default : System.out.println("Unknown status");
             }
         }
         return sb.append("}").toString();
