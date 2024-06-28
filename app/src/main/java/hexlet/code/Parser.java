@@ -19,6 +19,7 @@ public class Parser {
         }
         return mapParse;
     }
+
     public static Map<String, Object> deserializeJsonToMap(String json) {
         Map<String, Object> map = new LinkedHashMap<>();
         ObjectMapper jsonMapper = new ObjectMapper();
@@ -29,6 +30,7 @@ public class Parser {
         }
         return map;
     }
+
     public static Map<String, Object> deserializeYamlToMap(String yaml) {
         Map<String, Object> map = new LinkedHashMap<>();
         ObjectMapper ymlMapper = new YAMLMapper();
