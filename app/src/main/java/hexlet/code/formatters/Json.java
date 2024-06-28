@@ -11,10 +11,10 @@ public class Json {
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
         try {
-            json = mapper.writeValueAsString(differs);
+            json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(differs);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        return json;
+        return json.trim();
     }
 }
