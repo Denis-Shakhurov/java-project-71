@@ -9,18 +9,21 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> parse(String data, String type) {
+    public static Map<String, Object> parse(String data, String type) throws Exception {
 
         Map<String, Object> mapParse = new LinkedHashMap<>();
-        switch (type) {
-            case "json" : mapParse = deserializeJsonToMap(data); break;
-            case "yml", "yaml" : mapParse = deserializeYamlToMap(data); break;
-            default : System.out.println("Unknown format file");
+
+        if (type.equals("json")) {
+            mapParse = deserializeJsonToMap(data);
+        } else if (type.equals("yml") || type.equals("yaml")) {
+            mapParse = deserializeYamlToMap(data);
+        } else {
+            throw new Exception("Unknown format file");
         }
         return mapParse;
     }
 
-    public static Map<String, Object> deserializeJsonToMap(String json) {
+    private static Map<String, Object> deserializeJsonToMap(String json) {
         Map<String, Object> map = new LinkedHashMap<>();
         ObjectMapper jsonMapper = new ObjectMapper();
         try {
@@ -31,7 +34,7 @@ public class Parser {
         return map;
     }
 
-    public static Map<String, Object> deserializeYamlToMap(String yaml) {
+    private static Map<String, Object> deserializeYamlToMap(String yaml) {
         Map<String, Object> map = new LinkedHashMap<>();
         ObjectMapper ymlMapper = new YAMLMapper();
         try {
