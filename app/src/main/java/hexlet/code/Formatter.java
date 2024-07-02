@@ -8,26 +8,30 @@ import java.util.List;
 import java.util.Map;
 
 public class Formatter {
-    public static String formatToStylish(List<Map<String, Object>> differs) {
+    private static String formatToStylish(List<Map<String, Object>> differs) {
         return Stylish.convertToStylish(differs);
     }
 
-    public static String formatToPlain(List<Map<String, Object>> differs) {
+    private static String formatToPlain(List<Map<String, Object>> differs) {
         return Plain.convertToPlain(differs);
     }
 
-    public static String formatToJson(List<Map<String, Object>> differs) {
-        return Json.createJson(differs);
+    private static String formatToJson(List<Map<String, Object>> differs) {
+        return Json.convertJson(differs);
     }
 
-    public static String format(List<Map<String, Object>> differs, String nameFormat) {
+    public static String format(List<Map<String, Object>> differs, String nameFormat) throws Exception {
         nameFormat.toLowerCase().trim();
         String differ = "";
-        switch (nameFormat) {
-            case "stylish" : differ = Formatter.formatToStylish(differs); break;
-            case "plain" : differ = Formatter.formatToPlain(differs); break;
-            case "json" : differ = Formatter.formatToJson(differs); break;
-            default : System.out.println("Unknown format");
+        
+        if (nameFormat.equals("stylish")) {
+            differ = formatToStylish(differs);
+        } else if (nameFormat.equals("plain")) {
+            differ = formatToPlain(differs);
+        } else if (nameFormat.equals("json")) {
+            differ = formatToJson(differs);
+        } else {
+            throw new Exception("Unknown format");
         }
         return differ;
     }
