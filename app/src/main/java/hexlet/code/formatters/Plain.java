@@ -19,19 +19,19 @@ public class Plain {
             }
             if (!status.equals("unchanged") && !status.equals("changed")) {
                 switch (status) {
-                    case "update" : sb.append("Property '" + keyPrint
-                            + "' was updated. From " + printValue(differs.get(i - 1))
-                            + " to " + printValue(differs.get(i)) + "\n"); break;
-                    case "added" : sb.append("Property '" + keyPrint + "' was added with value: "
-                            + printValue(differs.get(i)) + "\n"); break;
-                    case "deleted" : sb.append("Property '" + keyPrint + "' was removed\n"); break;
-                    default : System.out.println("Unknown status");
+                    case "update" -> sb.append("Property '" + keyPrint
+                            + "' was updated. From " + formValue(differs.get(i - 1))
+                            + " to " + formValue(differs.get(i)) + "\n");
+                    case "added" -> sb.append("Property '" + keyPrint + "' was added with value: "
+                            + formValue(differs.get(i)) + "\n");
+                    case "deleted" -> sb.append("Property '" + keyPrint + "' was removed\n");
+                    default -> System.out.println("Unknown status");
                 }
             }
         }
         return sb.toString().trim();
     }
-    public static String printValue(Map<String, Object> map) {
+    public static String formValue(Map<String, Object> map) {
         var keys = map.keySet();
         Object value = null;
         for (var key : keys) {
