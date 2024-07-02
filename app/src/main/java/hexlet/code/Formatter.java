@@ -23,7 +23,6 @@ public class Formatter {
     public static String format(List<Map<String, Object>> differs, String nameFormat) throws Exception {
         nameFormat.toLowerCase().trim();
         String differ = "";
-        
         if (nameFormat.equals("stylish")) {
             differ = formatToStylish(differs);
         } else if (nameFormat.equals("plain")) {
