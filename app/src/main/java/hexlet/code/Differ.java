@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Differ {
-    public static String generate(String path1, String path2, String nameFormat) {
+    public static String generate(String path1, String path2, String nameFormat) throws Exception {
         String data1 = fileToString(path1);
         String data2 = fileToString(path2);
 
@@ -22,7 +22,7 @@ public class Differ {
         return Formatter.format(differs, nameFormat);
     }
 
-    public static String generate(String path1, String path2) {
+    public static String generate(String path1, String path2) throws Exception {
         return generate(path1, path2, "stylish");
     }
 
