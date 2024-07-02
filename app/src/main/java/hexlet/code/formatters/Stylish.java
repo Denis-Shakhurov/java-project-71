@@ -20,12 +20,12 @@ public class Stylish {
                 value = String.valueOf(entry.getValue());
             }
             switch (status) {
-                case "unchanged" : sb.append("    " + key + ": " + value + "\n"); break;
-                case "added" : sb.append("  " + "+ " + key + ": " + value + "\n"); break;
-                case "update" : sb.append("  " + "+ " + key + ": " + value + "\n"); break;
-                case "changed" : sb.append("  " + "- " + key + ": " + value + "\n"); break;
-                case "deleted" : sb.append("  " + "- " + key + ": " + value + "\n"); break;
-                default : System.out.println("Unknown status");
+                case "unchanged" -> sb.append("    " + key + ": " + value + "\n");
+                case "added" -> sb.append("  " + "+ " + key + ": " + value + "\n");
+                case "update" -> sb.append("  " + "+ " + key + ": " + value + "\n");
+                case "changed" -> sb.append("  " + "- " + key + ": " + value + "\n");
+                case "deleted" -> sb.append("  " + "- " + key + ": " + value + "\n");
+                default -> System.out.println("Unknown status");
             }
         }
         return sb.append("}").toString();
