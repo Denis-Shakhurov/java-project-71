@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Json {
-    public static String createJson(List<Map<String, Object>> differs) {
+    public static String convertJson(List<Map<String, Object>> differs) {
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
         try {
