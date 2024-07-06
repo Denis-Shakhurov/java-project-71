@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String convertToStylish(List<Map<String, Object>> differs) {
+    public static String convertToStylish(List<Map<String, Object>> differs) throws Exception {
         StringBuilder sb = new StringBuilder("{\n");
 
         for (Map<String, Object> diff : differs) {
@@ -25,7 +25,7 @@ public class Stylish {
                 case "update" -> sb.append("  " + "+ " + key + ": " + value + "\n");
                 case "changed" -> sb.append("  " + "- " + key + ": " + value + "\n");
                 case "deleted" -> sb.append("  " + "- " + key + ": " + value + "\n");
-                default -> System.out.println("Unknown status");
+                default -> throw new Exception("Unknown status");
             }
         }
         return sb.append("}").toString();
