@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Plain {
-    public static String convertToPlain(List<Map<String, Object>> differs) {
+    public static String convertToPlain(List<Map<String, Object>> differs) throws Exception {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < differs.size(); i++) {
@@ -25,7 +25,7 @@ public class Plain {
                     case "added" -> sb.append("Property '" + keyPrint + "' was added with value: "
                             + formValue(differs.get(i)) + "\n");
                     case "deleted" -> sb.append("Property '" + keyPrint + "' was removed\n");
-                    default -> System.out.println("Unknown status");
+                    default -> throw new Exception("Unknown status");
                 }
             }
         }
